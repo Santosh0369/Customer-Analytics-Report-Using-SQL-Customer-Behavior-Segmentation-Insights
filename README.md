@@ -32,6 +32,7 @@ This project solves these challenges through SQL-based customer analysis.
 ## 3️⃣ Methodology
 
 The analysis follows a structured approach:
+<img width="1209" height="582" alt="image" src="https://github.com/user-attachments/assets/f1cd8386-35cc-400d-b71e-81e10f7a6941" />
 
 ### 🔹 Data Integration
 
@@ -85,6 +86,7 @@ This project demonstrates:
 ---
 
 ## 5️⃣ Results & Business Recommendation
+<img width="962" height="761" alt="image" src="https://github.com/user-attachments/assets/7a09a06b-c203-47ab-8ca3-ca989cfbdad0" />
 
 ### 📊 Key Insights:
 
