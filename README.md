@@ -25,273 +25,229 @@ Without proper analysis, companies risk:
 * Inefficient marketing campaigns
 * Poor customer retention
 
-This project solves these challenges through SQL-based customer analysis.
+---
+
+# 👥 Customer Analytics Report (SQL)
+
+## 📌 Overview
+
+This project builds a **customer-level analytics report** using SQL by creating a view:
+`gold.report_customers`.
+
+The report consolidates transactional and customer data to generate **actionable insights**, enabling better understanding of customer behavior, segmentation, and value.
 
 ---
 
-## 3️⃣ Methodology
+## 🎯 Objectives
 
-The analysis follows a structured approach:
-<img width="1209" height="582" alt="image" src="https://github.com/user-attachments/assets/f1cd8386-35cc-400d-b71e-81e10f7a6941" />
-
-### 🔹 Data Integration
-
-* Joined:
-
-  * `fact_sales` (transactions)
-  * `dim_customers` (customer details)
-
-### 🔹 Customer-Level Metrics
-
-* Calculated:
-
-  * Total spending per customer
-  * Number of orders
-  * Purchase frequency
-  * Customer lifespan
-
-### 🔹 Aggregation
-
-* Used `GROUP BY` to summarize data at the customer level
-
-### 🔹 Segmentation Logic
-
-* Applied `CASE` statements to classify customers into:
-
-  * VIP customers
-  * Regular customers
-  * New customers
-
-### 🔹 Ranking Analysis
-
-* Identified:
-
-  * Top customers by revenue
-  * Least active customers
+* Combine customer and sales data into a single analytical layer
+* Segment customers based on **value and engagement**
+* Calculate key **business KPIs**
+* Enable downstream reporting and dashboarding
 
 ---
 
-## 4️⃣ Skills
+## 🏗️ Data Model
 
-This project demonstrates:
+This report is built using:
 
-* SQL Data Analysis
-* Aggregations (SUM, COUNT, AVG)
-* Joins (Fact & Dimension Tables)
-* Customer Segmentation
-* Business Logic Implementation (CASE statements)
-* KPI Development
-* Customer Behaviour Analysis
+* `gold.fact_sales` → transactional data
+* `gold.dim_customers` → customer details
 
 ---
 
-## 5️⃣ Results & Business Recommendation
-<img width="962" height="761" alt="image" src="https://github.com/user-attachments/assets/7a09a06b-c203-47ab-8ca3-ca989cfbdad0" />
+## ⚙️ Key Features
 
-### 📊 Key Insights:
+### 1️⃣ Customer Profile Enrichment
 
-* A small percentage of customers contribute the majority of revenue
-* High-value (VIP) customers have longer engagement and higher spending
-* Some customers show very low activity or engagement
-* Customer segmentation provides clear business targeting opportunities
+* Full customer name
+* Age calculation
+* Unique customer identifiers
 
-### 💡 Business Recommendations:
+### 2️⃣ Customer Segmentation
 
-* Retain VIP customers through loyalty programs and personalized offers
-* Engage regular customers to increase their spending
-* Re-activate inactive customers with targeted campaigns
-* Use segmentation for more efficient marketing strategies
+#### 🔹 Age Groups
 
----
+* Under 20
+* 20–29
+* 30–39
+* 40–49
+* 50 and above
 
-## 6️⃣ Next Steps
+#### 🔹 Customer Segments
 
-To enhance this project further:
-
-* 📈 Build dashboards using Power BI / Tableau
-* ⏳ Perform cohort and retention analysis
-* 🎯 Implement RFM (Recency, Frequency, Monetary) segmentation
-* 🤖 Apply predictive models for customer churn
-* 🔄 Automate reporting pipelines
+* **VIP** → High value + long relationship
+* **Regular** → Moderate value
+* **New** → Recent customers
 
 ---
 
-## 📌 Conclusion
+### 3️⃣ Aggregated Metrics
 
-This project demonstrates how SQL can be used to build a **customer analytics reporting system**, helping businesses better understand their customers and make data-driven decisions to improve retention and revenue.
-
----
-
-This script builds a **Customer Performance Report** — it transforms raw sales data into **customer-level insights** like spending, activity, segmentation, and value.
-
-I’ll explain it clearly so you can **understand + confidently explain it in interviews** 👇
-
----
-
-# 🧠 What This Code Does (Big Picture)
-
-👉 It answers:
-
-* Who are the most valuable customers?
-* How much does each customer spend?
-* How active are customers over time?
-* How can customers be segmented?
-
-👉 In one line:
-
-> **It converts transaction data into a structured customer analytics report**
+* 🧾 Total Orders
+* 💰 Total Sales
+* 📦 Total Quantity Purchased
+* 🛍️ Total Unique Products
+* 📅 Last Order Date
+* ⏳ Customer Lifespan (months)
 
 ---
 
-# 🏗️ 1. Data Joining (Foundation)
+### 4️⃣ Key Performance Indicators (KPIs)
 
-### 🔹 Core idea:
-
-👉 Why this join is needed:
-
-| Table         | Purpose                                |
-| ------------- | -------------------------------------- |
-| fact_sales    | Transactions (orders, sales, quantity) |
-| dim_customers | Customer details                       |
-
-👉 Without join → only IDs ❌
-👉 With join → meaningful customer info ✅
+* 📊 **Recency** → Months since last purchase
+* 💵 **Average Order Value (AOV)**
+* 📈 **Average Monthly Spend**
 
 ---
 
-# 📊 2. Customer-Level Aggregation
+## 🧠 SQL Logic Breakdown
 
-### 🔹 Key logic:
+### 🔹 Step 1: Base Query
 
-👉 This groups all transactions **per customer**
-
----
-
-### 🔹 Metrics calculated:
-
-#### ✅ Total Spending
-
-👉 Total revenue per customer
+* Joins fact and dimension tables
+* Extracts core transactional + customer attributes
+* Filters valid orders
 
 ---
 
-#### ✅ Total Orders
+### 🔹 Step 2: Customer Aggregation
 
-👉 Number of unique purchases
-
----
-
-#### ✅ Total Quantity
-
-👉 Total items bought
+* Groups data at customer level
+* Computes totals and lifespan
+* Identifies last purchase date
 
 ---
 
-# 📅 3. Customer Activity Tracking
+### 🔹 Step 3: Final Transformation
 
-### 🔹 First & Last Purchase
+* Creates:
 
-👉 Helps identify:
+  * Age groups
+  * Customer segments
+* Calculates KPIs:
 
-* When customer started buying
-* Latest activity
-
----
-
-### 🔹 Customer Lifespan
-
-
-👉 Measures:
-
-* How long customer has been active
+  * Recency
+  * AOV
+  * Monthly spend
 
 ---
 
-# 🧩 4. Customer Segmentation (Most Important)
+## 🧾 SQL Implementation
 
-### 🔹 Logic:
+```sql
+-- Create View: gold.report_customers
 
+IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
+    DROP VIEW gold.report_customers;
+GO
 
-👉 Customers are categorized into:
+CREATE VIEW gold.report_customers AS
 
-| Segment | Meaning                   |
-| ------- | ------------------------- |
-| VIP     | High spending + long-term |
-| Regular | Moderate spending         |
-| New     | Recently joined           |
+WITH base_query AS (
+    SELECT
+        f.order_number,
+        f.product_key,
+        f.order_date,
+        f.sales_amount,
+        f.quantity,
+        c.customer_key,
+        c.customer_number,
+        CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+        DATEDIFF(year, c.birthdate, GETDATE()) AS age
+    FROM gold.fact_sales f
+    LEFT JOIN gold.dim_customers c
+        ON c.customer_key = f.customer_key
+    WHERE order_date IS NOT NULL
+),
+
+customer_aggregation AS (
+    SELECT 
+        customer_key,
+        customer_number,
+        customer_name,
+        age,
+        COUNT(DISTINCT order_number) AS total_orders,
+        SUM(sales_amount) AS total_sales,
+        SUM(quantity) AS total_quantity,
+        COUNT(DISTINCT product_key) AS total_products,
+        MAX(order_date) AS last_order_date,
+        DATEDIFF(month, MIN(order_date), MAX(order_date)) AS lifespan
+    FROM base_query
+    GROUP BY 
+        customer_key,
+        customer_number,
+        customer_name,
+        age
+)
+
+SELECT
+    customer_key,
+    customer_number,
+    customer_name,
+    age,
+
+    CASE 
+        WHEN age < 20 THEN 'Under 20'
+        WHEN age BETWEEN 20 AND 29 THEN '20-29'
+        WHEN age BETWEEN 30 AND 39 THEN '30-39'
+        WHEN age BETWEEN 40 AND 49 THEN '40-49'
+        ELSE '50 and above'
+    END AS age_group,
+
+    CASE 
+        WHEN lifespan >= 12 AND total_sales > 5000 THEN 'VIP'
+        WHEN lifespan >= 12 AND total_sales <= 5000 THEN 'Regular'
+        ELSE 'New'
+    END AS customer_segment,
+
+    last_order_date,
+    DATEDIFF(month, last_order_date, GETDATE()) AS recency,
+    total_orders,
+    total_sales,
+    total_quantity,
+    total_products,
+    lifespan,
+
+    -- Average Order Value
+    CASE 
+        WHEN total_orders = 0 THEN 0
+        ELSE total_sales / total_orders
+    END AS avg_order_value,
+
+    -- Average Monthly Spend
+    CASE 
+        WHEN lifespan = 0 THEN total_sales
+        ELSE total_sales / lifespan
+    END AS avg_monthly_spend
+
+FROM customer_aggregation;
+```
 
 ---
 
-### 💡 Why this matters:
+## 🚀 Use Cases
 
-* Used in real-world marketing
-* Helps target customers differently
-
----
-
-# 🏆 5. Ranking / Performance Analysis
-
-### 🔹 Typical logic:
-
-👉 Identifies:
-
-* Top customers (high revenue)
-* Low-value customers
+* 📊 Power BI / Tableau dashboards
+* 🎯 Customer segmentation analysis
+* 📈 Marketing campaign targeting
+* 💡 Customer lifetime value analysis
 
 ---
 
-### 💡 Use:
+## 🧩 Future Improvements
 
-* Loyalty programs
-* Customer prioritization
-
----
-
-# 📊 6. Business Metrics (KPIs)
-
-The script generates:
-
-* Total Revenue per customer
-* Order frequency
-* Engagement (lifespan)
-* Customer segments
-
-👉 These become **decision-making metrics**
+* Add **RFM segmentation (Recency, Frequency, Monetary)**
+* Include **customer churn prediction features**
+* Integrate with **real-time data pipelines**
+* Add **geographical insights**
 
 ---
 
-# 🎯 What This Script Really Is
+## 📌 Key Takeaways
 
-👉 This is:
+* Transforms raw sales data into **business-ready insights**
+* Demonstrates strong **SQL aggregation + analytical thinking**
+* Suitable for **data analyst portfolio projects**
 
-### ✅ **Customer Analytics & Segmentation Report**
-
----
-
-# 🚀 Skills Demonstrated
-
-This script shows:
-
-✔ SQL joins (fact + dimension)
-✔ Aggregations (SUM, COUNT, MIN, MAX)
-✔ Date analysis (DATEDIFF)
-✔ Customer segmentation (CASE)
-✔ KPI creation
-✔ Business thinking
-
----
-
-# 💬  Explanation
-
-> "This SQL script builds a customer-level analytics report by aggregating transactional data to calculate metrics like total spending, order frequency, and customer lifespan. It also segments customers using business rules into categories like VIP and regular customers, enabling targeted marketing and retention strategies."
-
----
-
-# 🧠 Simple Summary
-
-👉 In one line:
-
-> This code analyzes **who the customers are, how much they spend, and how valuable they are to the business**
-
----
 
