@@ -76,6 +76,10 @@ This report is built using:
 
 #### 🔹 Customer Segments
 
+<img width="967" height="746" alt="image" src="https://github.com/user-attachments/assets/1758b57a-9501-48f0-9381-8d6aaf20518f" />
+
+---
+
 * **VIP** → High value + long relationship
 * **Regular** → Moderate value
 * **New** → Recent customers
@@ -223,6 +227,7 @@ SELECT
 
 FROM customer_aggregation;
 ```
+<img width="1180" height="624" alt="image" src="https://github.com/user-attachments/assets/7a1a5a73-81ba-41be-b0be-7f9b61b84ac5" />
 
 ---
 
