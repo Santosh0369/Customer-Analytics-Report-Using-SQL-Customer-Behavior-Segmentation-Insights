@@ -249,10 +249,3 @@ FROM customer_aggregation;
 
 ---
 
-## 📌 Key Takeaways
-
-* Transforms raw sales data into **business-ready insights**
-* Demonstrates strong **SQL aggregation + analytical thinking**
-* Suitable for **data analyst portfolio projects**
-
-
